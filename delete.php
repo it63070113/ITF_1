@@ -5,7 +5,7 @@ mysqli_real_connect($conn, 'dataif.mysql.database.azure.com', 'it63070113@dataif
 
 $id = $_GET['id']; // get id through query string
 
-$del = mysqli_query($conn,$id); // delete query
+$del = mysqli_query($conn,"delete from tblemp where id = '$id'");
 
 if($del)
 {
