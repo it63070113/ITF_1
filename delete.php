@@ -10,7 +10,7 @@ $del = mysqli_query($db,"show.php= '$id'"); // delete query
 if($del)
 {
     mysqli_close($db); // Close connection
-    header("location:show.php"); // redirects to all records page
+    header("show.php"); // redirects to all records page
     exit;	
 }
 else
