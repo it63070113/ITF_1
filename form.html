@@ -13,6 +13,8 @@
     <input type="text" name = "link" id="idLink" placeholder="Enter Link"> <br><br>
     <input type="submit" id="commentBtn"></a>
     <input type="button" onclick="window.location.href='show.php'" value="Show Data">
+    <td><a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a></td>
+    <td><a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a></td>
   </form></center>
 </body>
 </html>
