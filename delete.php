@@ -5,12 +5,12 @@ mysqli_real_connect($conn, 'dataif.mysql.database.azure.com', 'it63070113@dataif
 
 $id = $_GET['id']; // get id through query string
 
-$del = mysqli_query($db,"show.php= '$id'"); // delete query
+$del = mysqli_query($db,"delete from tblemp where id = '$id'"); // delete query
 
 if($del)
 {
     mysqli_close($db); // Close connection
-    header("show.php"); // redirects to all records page
+    header("location:show.php"); // redirects to all records page
     exit;	
 }
 else
