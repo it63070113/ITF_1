@@ -5,7 +5,7 @@ mysqli_real_connect($conn,'dataif.mysql.database.azure.com', 'it63070113@dataif'
 
 $id = $_GET['id','link','comment','name'];
 
-$del = mysqli_query($conn,'DELETE * FROM guestbook= '$id,$link,$comment,$name'');
+$del = mysqli_query($conn,"DELETE * FROM guestbook= '$id','$link','$comment','$name'");
 
 if($del)
 {
