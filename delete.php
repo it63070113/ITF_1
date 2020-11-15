@@ -1,11 +1,10 @@
 <?php
 
-$conn = mysqli_init();
-mysqli_real_connect($conn,'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
+$conn = mysqli_real_connect($conn,'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
 
 $id = $_GET['name'];
 
-$del = mysqli_query($conn,"DELETE * FROM guestbook = '$id'");
+$del = mysqli_query($conn,"DELETE FROM guestbook = '$id'");
 
 if($del)
 {
