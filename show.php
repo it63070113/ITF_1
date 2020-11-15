@@ -38,7 +38,7 @@
             <td><?php echo $Result['comment'];?></td>
             <td><?php echo $Result['link'];?></td>
             <td><div align="center"><button type="button" class="btn btn-light">Edit</button>&nbsp;
-            <input type="submit" class="button" name="Delete" id="Delete" value="DELETE"/></div></td>
+            <input type="button" onclick="window.location.href='delete.php'" value="Delete"></div></td>
         </tr>
     <?php
         }
@@ -54,23 +54,5 @@ mysqli_close($conn);
 ?>
 
 
-<?php
-
-//if($_GET){
-if(isset($_GET['Delete'])){
-
-  $link = mysql_connect($conn, 'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
-  if (!$link) {
-    die('Could not connect: ' . mysql_error());
-  }
-  $sql = "DELETE  FROM guestbook";
-  $sql1=mysql_query($sql, $link);
-  if (mysql_query( $sql1)) {
-    echo "Database was successfully dropped\n";
-  } else {
-    echo 'Error dropping database: ' . mysql_error() . "\n";
-  }
-}
-?>
 </body>
 </html>
