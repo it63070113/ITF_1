@@ -1,20 +1,38 @@
+<html>
+<head>
+<title>ITF Lab</title>
+</head>
+<body>
 <?php
-
 $conn = mysqli_init();
-mysqli_real_connect($conn,'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
-
-$id = $_GET['id','link','comment','name'];
-
-$del = mysqli_query($conn,"DELETE * FROM guestbook= '$id','$link','$comment','$name'");
-
-if($del)
+mysqli_real_connect($conn, 'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
+if (mysqli_connect_errno($conn))
 {
-    mysqli_close($conn);
-    header("location:show.php");
-    exit;
+    die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
-else
+$res = mysqli_query($conn, 'SELECT * FROM guestbook');
+?>
+<table width="600" border="1">
+  <tr>
+    <th width="100"> <div align="center">Name</div></th>
+    <th width="350"> <div align="center">Comment </div></th>
+    <th width="150"> <div align="center">Link </div></th>
+  </tr>
+<?php
+while($Result = mysqli_fetch_array($res))
 {
-    echo "Error deleting record";
+?>
+  <tr>
+    <td><?php echo $Result['name'];?></div></td>
+    <td><?php echo $Result['comment'];?></td>
+    <td><?php echo $Result['link'];?></td>
+  </tr>
+<?php
 }
 ?>
+</table>
+<?php
+mysqli_close($conn);
+?>
+</body>
+</html>
