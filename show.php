@@ -38,7 +38,8 @@
             <td><?php echo $Result['comment'];?></td>
             <td><?php echo $Result['link'];?></td>
             <td><div align="center"><button type="button" class="btn btn-light">Edit</button>&nbsp;
-            <input type="button" onclick="window.location.href='delete.php'" value="Delete"></div></td>
+            <a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a>
+                </div></td>
         </tr>
     <?php
         }
