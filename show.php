@@ -1,40 +1,20 @@
-<html>
-<head>
-<title>ITF Lab</title>
-</head>
-<body>
 <?php
+
 $conn = mysqli_init();
-mysqli_real_connect($conn, 'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
-if (mysqli_connect_errno($conn))
+mysqli_real_connect($conn,'dataif.mysql.database.azure.com', 'it63070113@dataif', 'EMLcnk22', 'itflab', 3306);
+
+$id = $_GET['id','link','comment','name'];
+
+$del = mysqli_query($conn,"DELETE * FROM guestbook= '$id','$link','$comment','$name'");
+
+if($del)
 {
-    die('Failed to connect to MySQL: '.mysqli_connect_error());
+    mysqli_close($conn);
+    header("location:show.php");
+    exit;
 }
-$res = mysqli_query($conn, 'SELECT * FROM guestbook');
-?>
-<table width="600" border="1">
-  <tr>
-    <th width="100"> <div align="center">name</div></th>
-    <th width="350"> <div align="center">comment </div></th>
-    <th width="150"> <div align="center">link </div></th>
-  </tr>
-<?php
-while($Result = mysqli_fetch_array($res))
+else
 {
-?>
-  <tr>
-    <td><?php echo $Result['name'];?></div></td>
-    <td><?php echo $Result['comment'];?></td>
-    <td><?php echo $Result['link'];?></td>
-    <td><a href="edit.php?id=<?php echo $Result['id']; ?>">Edit</a></td>
-    <td><a href="delete.php?id=<?php echo $Result['id']; ?>">Delete</a></td>
-  </tr>
-<?php
+    echo "Error deleting record";
 }
 ?>
-</table>
-<?php
-mysqli_close($conn);
-?>
-</body>
-</html>
